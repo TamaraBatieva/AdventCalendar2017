@@ -6,19 +6,10 @@ function getHalwayRoundDigitDouble(input) {
     const half = inputLength / 2;
 
     for (let i = 0; i < inputLength; i++) {
-        let halfwayIndex = i + half;
-        if (halfwayIndex > inputLength) {
-
-            if (input[i] === input[-(inputLength - halfwayIndex)]) {
-                sum += Number(input[i]);
-            }
-        } else {
-            if (input[i] === input[halfwayIndex]) {
-                sum += Number(input[i]);
-            }
+        if (input[i] === input[(i + half) % inputLength]) {
+            sum += Number(input[i]);
         }
     }
-    console.log(sum);
 }
 
 getHalwayRoundDigitDouble(inputString)
