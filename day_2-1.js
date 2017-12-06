@@ -16,18 +16,10 @@ const input = `157	564	120	495	194	520	510	618	244	443	471	473	612	149	506	138
 411	178	4263	4690	3653	162	3201	4702	3129	2685	3716	147	3790	4888	79	165`
 
 function getDifferencesSum(input) {
-    let inputArray = parseInput(input);
-    return inputArray.map((rowArrayOfStrings) => {
-        const rowArray = rowArrayOfStrings.map((arr) => Number(arr))
-        const min = rowArray.reduce((prev, curr) => {
-            return (curr < prev ? curr : prev);
-        });
-        const max = rowArray.reduce((prev, curr) => {
-            return (curr > prev ? curr : prev);
-        });
-
-        return max - min;
-    }).reduce((curr, prev) => curr + prev);
+    return parseInput(input)
+    .map(rowArrayOfStrings => rowArrayOfStrings.map((arr) => Number(arr)))
+    .map(it => Math.max(...it) - Math.min(...it))
+    .reduce((curr, prev) => curr + prev);
 }
 
 function parseInput(input) {
