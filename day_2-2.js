@@ -17,14 +17,12 @@ const input = `157	564	120	495	194	520	510	618	244	443	471	473	612	149	506	138
 
 function getEvenlyDivisibleSum(input) {
     return parseInput(input)
-    .map(rowArrayOfStrings => rowArrayOfStrings.map((arr) => Number(arr)))
+    .map(rowArrayOfStrings => rowArrayOfStrings.map(arr => Number(arr)))
     .map((it, index) => {
     	let arrayLength = it.length;
 		for (let i = 0; i < arrayLength; i++) {
     		for (let j = 0; j < arrayLength; j++) {
-	    		if (i === j) {
-	    			continue;
-	    		} else if (it[i] % it[j] === 0) {
+	    		if (i !== j && it[i] % it[j] === 0) {
 	    			return it[i] / it[j];
 	    		}
     		}
